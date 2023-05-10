@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', Arial;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+body {
+  widows: 100%;
+  background: url(media/background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat no-repeat;
+}
+
+.box {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  width: 400px;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+  background: #fff;
+  border-radius: 15px;
+}
+
+.boxMatiere {
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  width: 400px;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+  background: #fff;
+  border-radius: 15px;
+}
+
+.box h1,
+.boxMatiere h1 {
+  color: black;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.box img {
+  align-items: center;
+  padding-left: 85px;
+  width: 70%;
+}
+
+.box .unInput,
+.boxMatiere .unInput {
+  position: relative;
+}
+
+.box .unInput input,
+.boxMatiere .unInput input {
+  color: black;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #fff;
+  outline: none;
+}
+
+.box .unInput label,
+.boxMatiere .unInput label {
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #726e7c;
+  letter-spacing: 1px;
+  font-size: 16px;
+  padding: 12px 0;
+  transition: .4s;
+}
+
+.box .connexion input[type="submit"],
+.boxMatiere .connexion input[type="submit"] {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: #33A8FF;
+  color: #201a30;
+  padding: 8px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.box .connexion a,
+.boxMatiere .connexion a {
+  padding: 8px 8px;
+  color: #fff;
+}
+
+.box .connexion input[type="submit"]:hover,
+.boxMatiere .connexion input[type="submit"]:hover {
+  transform: scale(1.1);
+  transition: .3s;
+  cursor: pointer;
+}
+
+.box .unInput input:focus~label,
+.box .unInput input:valid~label,
+.boxMatiere .unInput input:focus~label,
+.boxMatiere .unInput input:valid~label {
+  top: -20px;
+  left: 0;
+  color: #33A8FF;
+  font-size: 12px;
+}
+
+.box #noneFocus input~label,
+.box .unInput input:valid~label {
+  top: -20px;
+  left: 0;
+  color: #33A8FF;
+  font-size: 12px;
+}
+
+#monte {
+  margin-bottom: 10px;
+}
+
+.boxGonote {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  width: 400px;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+  background: #fff;
+  border-radius: 15px;
+}
+
+.boxGonote a {
+  padding: 15px;
+}
