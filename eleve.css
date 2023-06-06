@@ -51,89 +51,8 @@
   transition: transform 0.2s ease-in;
 }
 
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 45px;
-  padding-left: 25%;
-  padding-right: 8%;
-}
-
-.logo {
-  color: black;
-  font-size: 28px;
-}
-
-.btn {
-  border: none;
-  background: #33a8ff;
-  padding: 12px 15px;
-  border-radius: 30px;
-  color: white;
-  font-size: 15px;
-  transition: 0.4s;
-}
-
-.btn a {
-  color: black;
-  font-weight: 500;
-  padding: 8px 26px;
-  border: 2px solid transparent;
-  transition: ease 0.4s;
-}
-
-.btn i {
-  color: black;
-}
-
-.btn:hover {
-  background: transparent;
-  border: 1.3px solid #33a8ff;
-}
-
 .sidebar i {
   margin-right: 18px;
-}
-
-.eleves h2,
-.prof h2 {
-  margin-left: 22%;
-}
-
-.eleves h2,
-.prof h2 {
-  margin-bottom: 0.8rem;
-}
-
-.eleves table,
-.prof table {
-  background: white;
-  width: 70%;
-  border-radius: 2rem;
-  margin-left: 350px;
-  padding: 1.8rem;
-  text-align: center;
-  box-shadow: 0 2rem 3rem #9f9f9f;
-  transition: all 0.3s ease;
-}
-
-table tbody td {
-  height: 2.8rem;
-  border-bottom: 1px solid grey;
-}
-
-tr {
-  text-transform: uppercase;
-}
-
-th {
-  border-bottom: 1px solid grey;
-}
-
-.action {
-  color: black;
-  margin-left: 30px;
 }
 
 #interface {
@@ -179,6 +98,41 @@ th {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #33a8ff;
+  color: #fff;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
 }
 
 .welcome-message {

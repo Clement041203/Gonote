@@ -10,7 +10,7 @@ if (!empty($_POST)) {
     if (isset($identifiant, $pass) && !empty($identifiant) && !empty($pass)) {
         require_once "bdd.php";
 
-        $sql = "SELECT * FROM `Professeur` WHERE `identifiant` = :identifiant ";
+        $sql = "SELECT * FROM `Professeur` WHERE `identifiantUtilisateur` = :identifiant ";
 
         $query = $bdd->prepare($sql);
         $query->bindValue(":identifiant", $identifiant);
@@ -23,15 +23,14 @@ if (!empty($_POST)) {
             die('L\'identifiant et/ou le mot de passe est incorrect');
         }
 
-        if (!password_verify($pass, $user['password'])) {
+        if (!password_verify($pass, $user['passwordUtilisateur'])) {
             die('le mot de passe est incorrect');
         }
 
         $_SESSION['user'] = [
-            "id" => $user["idUser"],
+            "id" => $user["idUtilisateur"],
             "identifiant" => $identifiant
         ];
-
         header("Location: interfaceProf.php");
     } else {
         die('Un champ ou plusieurs ne sont pas rempli(s)');
@@ -54,7 +53,7 @@ if (!empty($_POST)) {
         <div class="box">
             <h1>Espace Profs</h1>
             <img src="media/prof.png" alt="">
-            <form action="postAjouterProf.php" method="post">
+            <form method="post">
                 <div class="unInput">
                     <input type="text" name="identifiant" required>
                     <label for>Identifiant</label>

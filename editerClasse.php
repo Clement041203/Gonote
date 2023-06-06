@@ -19,7 +19,7 @@ $editer = $query->fetchAll();
 <body>
     <div class="main">
         <div class="box">
-            <h1>Modifier le classe</h1>
+            <h1>Modifier la classe</h1>
             <form action="modifierClasse.php" method="POST">
             <div class="unInput" style="display:none;">
                     <input for="nameInput" type="text" name="id" 

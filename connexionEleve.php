@@ -10,7 +10,7 @@ $pass = htmlspecialchars($_POST['password']);
 if (!empty($_POST)) {
     if (isset($identifiant, $pass) && !empty($identifiant) && !empty($pass)) {
 
-        $sql = "SELECT * FROM `Eleves` WHERE `identifiant` = :identifiant ";
+        $sql = "SELECT * FROM `Eleve` WHERE `identifiantUtilisateur` = :identifiant ";
 
         $query = $bdd->prepare($sql);
         $query->bindValue(":identifiant", $identifiant);
@@ -23,14 +23,17 @@ if (!empty($_POST)) {
             die('L\'identifiant et/ou le mot de passe est incorrect');
         }
 
-        if (!password_verify($pass, $user['password'])) {
+        if (!password_verify($pass, $user['passwordUtilisateur'])) {
             die('le mot de passe est incorrect');
         }
 
         $_SESSION['user'] = [
-            "id" => $user["idUser"],
-            "identifiant" => $identifiant
+            "id" => $user["idUtilisateur"],
+            "identifiant" => $identifiant,
+            "classe" => $user["idClasse"]
         ];
+
+        // var_dump($_SESSION['user']);
 
         header("Location: interfaceEleve.php");
     } else {

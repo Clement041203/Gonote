@@ -20,6 +20,11 @@ $donneesMatiere = $query3->fetchAll();
 $sql4 = "SELECT * FROM Classe";
 $query4 = $bdd->query($sql4);
 $donneesClasse = $query4->fetchAll();
+
+$sql5 = "SELECT nomUtilisateur, prenomUtilisateur, libelle FROM interagir
+INNER JOIN Utilisateur ON Utilisateur.idUtilisateur = interagir.idUtilisateur;";
+$query5 = $bdd->query($sql5);
+$donneesHistorique = $query5->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -33,35 +38,39 @@ $donneesClasse = $query4->fetchAll();
 </head>
 
 <body>
+<div class="lds-ring" id="loader"><div></div><div></div><div></div><div>Veuillez patienter</div></div>
+<div id="interface">
     <div class="sidebar">
         <div class="sidebarBox">
         <h2>ESPACE ADMIN</h2>
-            <?php
-            if (!isset($_SESSION['user'])) {
-                // Si l'utilisateur n'est pas connecté, le rediriger vers la page de connexion
-                header("Location: connexionAdmin.php");
-                exit();
-            } else {
-                // Si l'utilisateur est connecté, afficher la page
-                ?> <p><?php echo "Bienvenue " . $_SESSION['user']["identifiant"] . " !";
-            }
-            ?></p> 
         </div>
-
-       
-
         <ul>
             <li><a href="#" onclick="changerTexte()"><i class="fa-solid fa-users"></i>Eleves</a></li>
             <li><a href="#" onclick="changerProf()"><i class="fa-solid fa-user"></i>Professeurs</a></li>
             <li><a href="#" onclick="matiere()"><i class="fa-solid fa-clipboard"></i>Matières</a></li>
             <li><a href="#" onclick="classe()"><i class="fa-sharp fa-solid fa-chalkboard-user"></i>Classe</a></li>
+            <li><a href="#" onclick="historique()"><i class="fa-sharp fa-solid fa-chalkboard-user"></i>Historique</a></li>
             <li><a href="deco.php"><i class="fa-solid fa-right-from-bracket"></i>Se deconnecter</a></li>
 
             <!-- <li><a href="Historique.php">Historique</a></li> -->
         </ul>
     </div>
 
-    <div id="texte1">
+    <div class="welcome-message" id="welcome">
+    <?php
+            if (!isset($_SESSION['user'])) {
+                // Si l'utilisateur n'est pas connecté, le rediriger vers la page de connexion
+                header("Location: connexionAdmin.php");
+                exit();
+            } else {
+                // Si l'utilisateur est connecté, afficher la page
+                ?> <h1><?php echo "Bienvenue " . $_SESSION['user']["identifiant"] . " !";
+            }
+            ?></h1> 
+    <p>Vous êtes connecté à votre interface Administrateur.</p>
+</div>
+
+    <div id="texte1" style="display:none;">
         <nav>
             <h2 class="logo">Eleves</h2>
             <div class="btn">
@@ -71,7 +80,7 @@ $donneesClasse = $query4->fetchAll();
 
         <div class="eleves">
             <br>
-            <?php echo "<table><thead><tr><th>Nom</th><th>Prenom</th><th>Identifiant</th><th>Niveau</th><th>Classe</th><th>Action</th></tr></thead>";
+            <?php echo "<table><thead><tr><th>Nom</th><th>Prenom</th><th>Identifiant</th><th>Section</th><th>Classe</th><th>Action</th></tr></thead>";
 
             echo "<tbody>";
             // Boucle pour parcourir les données et les afficher dans des <tr>
@@ -163,8 +172,33 @@ $donneesClasse = $query4->fetchAll();
             echo "</tbody>";
             echo "</table>";
             ?>
-        </div> 
+        </div>
     </div>
+
+    <div id="historique" style="display: none";>
+
+    <nav>
+        <h2 class="logo">Historique</h2>
+        </nav>
+
+    <div class="prof">
+    <?php echo "<table><thead><tr><th>Utilisateur</th><th>Etat</th></tr></thead>";
+
+    echo "<tbody>";
+    // Boucle pour parcourir les données et les afficher dans des <tr>
+    foreach ($donneesHistorique as $donneeEncours) {
+    echo "<tr><td>" . $donneeEncours["nomUtilisateur"] ." ". $donneeEncours["prenomUtilisateur"]. "</td>
+    <td>" . $donneeEncours["libelle"] ."</td></tr>";
+    }
+    echo "</tbody>";
+    echo "</table>";
+    ?>
+    </div>
+    <br>
+    
+    </div>
+</div>
+
 
     <script src="js.js"></script>
 

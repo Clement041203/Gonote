@@ -19,7 +19,7 @@ $editer = $query->fetchAll();
 <body>
     <div class="main">
         <div class="box">
-            <h1>Modifier le compte</h1>
+            <h1>Modifier la matiere</h1>
             <form action="modifierMatiere.php" method="POST">
             <div class="unInput" style="display:none;">
                     <input for="nameInput" type="text" name="id" 

@@ -5,6 +5,7 @@ session_start();
 $identifiant = htmlspecialchars($_POST['identifiant']);
 $pass = htmlspecialchars($_POST['password']);
 
+
 if (!empty($_POST)) {
     if (isset($identifiant, $pass) && !empty($identifiant) && !empty($pass)) {
 
@@ -16,9 +17,6 @@ if (!empty($_POST)) {
 
         $user = $query->fetch();
 
-
-
-
         if (!$user) {
             die('L\'identifiant et/ou le mot de passe est incorrect');
         }
@@ -28,15 +26,15 @@ if (!empty($_POST)) {
         }
 
         $_SESSION['user'] = [
-            "id" => $user["idUser"],
+            "id" => $user["idUtilisateur"],
             "identifiant" => $identifiant
         ];
-
         header("Location: interfaceAdmin.php");
     } else {
         die('Un champ ou plusieurs ne sont pas rempli(s)');
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -69,4 +67,6 @@ if (!empty($_POST)) {
             </form>
         </div>
     </div>
+    <script src="js.js"></script>
 </body>
+

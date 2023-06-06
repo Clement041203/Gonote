@@ -40,6 +40,18 @@ if (!empty($_POST)) {
             $query->bindValue(6, $nomClasse);
 
             $query->execute();
+            
+
+            $identifiantUtilisateur = 1; 
+            $libelle = "Création"; 
+
+            $sqlInteragir = "INSERT INTO `interagir`(`idUtilisateur`, `idUtilisateur_Administrateur`,`libelle`, `Date` ) VALUES (?,?,?, NOW())";
+            $queryInteragir = $bdd->prepare($sqlInteragir);
+            $queryInteragir->bindValue(1, $id);
+            $queryInteragir->bindValue(2, $identifiantUtilisateur);
+            $queryInteragir->bindValue(3, $libelle);
+       
+            $queryInteragir->execute();
 
             header("Location: interfaceAdmin.php");
         }
